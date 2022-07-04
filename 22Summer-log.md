@@ -145,3 +145,59 @@ BR（0000）：一个判断的作用(conditonal branch)，若上一条指令的�
 ***  
 今天剩下的时间去完善一下README吧，最近想写的课程总结也可以开个小头了。  
 ***  
+# 2022/7/4  
+今天下午看完了ICS的Chapter5，晚上看完了Chapter6，现在看的速度越来越快了，开始适应英语文本的阅读，但是也要注意质量。  
+***  
+## **计算机系统概论**  
+
+***Chapter5***  
+这一章名为LC-3，实际上的内容更注重LC-3的ISA。一开头说了ISA specifiles ：  
+* Memory Organization：就是类似之前提到的$2^2$-by-3-bit Memory，只不过在LC-3内部有的是一个$2^16$-by-16-bit Memory。
+* Registers：LC-3中有八个general purpose register (GPR)。  
+* The Instruction Set：Instruction 由 opcode和operand组成。在LC-3中就是15+1个指令。
+* Opcodes：每个ISA又有一定数量的Opcode。
+* Data Types：数据保存的不同形式。  
+* Addressing Mode：寻址模式，后续会讲到，在LC-3中运用三种。  
+* Condition Code：3个1bit寄存器(N,Z,P)用于存放0，1——每次GPR写入或者加载或者操作时。  
+
+然后开始介绍各类的Operate Instructions,Data Movement Instructions,Control Instructions。  
+
+在这个过程中学到了三种Addressing Mode：
+* PC-relative Mode：指令中的[8:0]与PC相加取得的地址。  
+* Indirect Mode：指令中[8:0]与PC相加取得的地址中存放着地址。 
+* Base+offset Mode：指令中[5:0]与指令中[8:6]寄存器中的值相加获得地址。  
+这些操作分别对应的Data Movement Instruction：LD,ST  LDI,STI  LDR,STR  
+  
+学到了两种控制循环的方法：  
+* Counter：设置一个计数器。
+* Sentinel：设置一个卫兵值（这里好像不是变量）  
+
+看了一个关于用累加实现乘法的例子。  
+
+然后又回到那张LC-3的Data Path图，明确了各条指令在机器中是如何运作之后，这张图中的一部分连接关系就显得比较明朗了——虽然还是记不住：（  
+* The Global Bus:这个应该就是负责数据传递的总线，Bus中，Data Path是可以转变的。
+* Memory：还是老样子，和MDR、MAR在一起运作。
+* ALU & Register File：RF的两个数据输出是直接或者间接连接到ALU上的，其中SR2OUT还要经过一个MUX。  
+* PC & PCMUX：微妙的连接关系，PCMUX的三个输入分别是：自增的PC、控制指令、未知，通过MUX来决定PC的下一个值究竟是什么。  
+* MARMUX：控制给到MAR的地址。  
+
+以LDR指令为例分析了指令周期的几个过程。 
+
+***Chapter6***  
+虽然是以Programming为题目，但是就是两大块内容：
+1、结构化的编程风格  
+2、Debug的范式  
+
+首先看到了如何用LC-3的指令实现*Sequential,Conditional,Iterative*这三个结构，然后就是看了之前那个例子如何从自然语言一步步分解成一个可编程的问题。  
+Debug相关，有几个基本方法：
+* Set Value
+* Execute Sequences：可以单步执行，也可以通过Set Breakpoint实现。  
+* Display Values  
+然后讲了四个例子，来表明在debug过程中会遇到的问题，和相应要去解决的方法。值得注意和总结的有：  
+* 语句本身有没有错误  
+* BR语句判断值取决于前一条语句产生的condition codes。
+* 在debug过程中要注意用Corner Case，以此为依据完成Set Value。
+***  
+总体来说今天的内容是比较多的，现在看书的速度加快了，希望自己能按照上课的节奏完成预习，现在就是希望自己能够在8点左右起床，想去吃个早饭什么的，每天学习的时间还是不够多，没有空闲去熟悉VScode之类的工具的操作了，像是在虚拟机上运用Lunix之类的估计要等这段时间过去吧。  
+现在我努力将这份recording写的简单一点，主要是讲究我究竟学了什么，而不是学的具体内容，主要还是一个简单的归纳总结。  
+***
