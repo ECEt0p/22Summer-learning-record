@@ -201,3 +201,47 @@ Debug相关，有几个基本方法：
 总体来说今天的内容是比较多的，现在看书的速度加快了，希望自己能按照上课的节奏完成预习，现在就是希望自己能够在8点左右起床，想去吃个早饭什么的，每天学习的时间还是不够多，没有空闲去熟悉VScode之类的工具的操作了，像是在虚拟机上运用Linux之类的估计要等这段时间过去吧。  
 现在我努力将这份recording写的简单一点，主要是讲究我究竟学了什么，而不是学的具体内容，主要还是一个简单的归纳总结。  
 ***
+# 2022/7/5  
+今天就是学习了一下计概，其他啥都没干，烦。  
+***  
+## **计算机系统概论**  
+***Chapter7***  
+这一章的内容是关于*Assembly Language*。其实就是讲了之前的机器语言转化为汇编语言的结构要怎么写。  
+
+一条Instruction由1+2+1组成:  
+* Opcodes & Operands:这两个部分是必需的！  
+* Labels：包含1到20长度的含大小写字母和数字，以字母开头。注意不能使用*保留字*。  
+* Comments：注释。  
+  
+还有一些是Pseudo-Ops(Assembler Directives)，这种指令在编译的过程中帮助Assember，在执行过程中“消失”。目前学了这几种：
+* .ORIG:指明在Memory中放置程序的位置。
+* .FILL:预留出空间来初始化值。  
+* .BLKW:预留出一系列的空间（？）
+* .STRINGZ:预留出n+1的空间用于存放字符串的ASCII码（16），最后一位存放0('\0')表示结束。  
+* .END:告诉编译器这里是程序的末尾。  
+
+在编译的过程中，是Two-Pass Process：
+The First-Pass：Creating the Symbol Table.  
+The Second-Pass：Generating the machine language program.  
+
+最后的这个小节的内容，不是很懂。大概的意思是，每一个执行的程序都被称为executable image，而这个image往往是由很多个object file转变而来的。这就导致了在编译过程中创建的Symbol Table可能存在问题（一个object file中的symbol可能在另一个中被解释）。  
+这就导致了.EXTERNAL的使用，保证Symbol不出错，从而实现多个object file的*link*(具体的内容，其实Figure8.6解释得很清晰)。  
+
+***Chapter8***  
+这章得内容是Data Structures（Abstract Data Type）。  
+
+在具体讲述数据结构之前，首先介绍了*subroutine(function)*的概念。讲述了Call/Return Mechanism,就是利用call指令和return指令完成对一个代码模块的调用。  
+* JSR(R):调用subroutine的指令，JSR采用PC-relative寻址模式，JSRR采用BaseR寻址模式（提供更广的寻址范围）。  
+* JMP：可用于返回某个语句(?)。  
+
+在调用之前，由于可能用到某些寄存器，通常会把这些寄存器中的数据先保存到Memory中，防止数据的丢失，在执行完成后再把这些值重新保存到寄存器中。  
+
+库函数，在一个库中（比如Math库）有一些可供调用的函数。这边的内容就是Chapter7末尾的一个形象例子，便于理解。  
+
+**Stack（栈）**  
+学习了栈的概念，知道了push和pop的操作，了解了underflow和overflow，知道了如何用汇编语言实现带检测的push和pop操作。  
+要注意的是：存在一个指针，始终指向Top（栈顶）；已经在栈中的Value是不会移动地址的的（因为pop等操作是通过这个指针完成的）。  
+***  
+今天学的比较懒散，明天加油，希望能能早起。最近想找个实验室，最好能有人带着我，让我知道能学些什么，来发表论文，胆大当爸爸。  
+其实有在想，每天浪费的时间有点多，早上可以研究一下整个网课的上课方式。  
+***
