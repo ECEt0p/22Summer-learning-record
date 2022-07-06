@@ -11,3 +11,5 @@
 4.the preview of Probability and Mathematical Statistics  
 
 The Instruction of Computer System 的教材是 The Instruction of Computer System (Yale Patt)
+  
+开始学习CS61A on 2022/7/7 选择的是20Spring的课程，感觉具体的差距不是很大，总之先学着，毕竟我的基础比较好。
