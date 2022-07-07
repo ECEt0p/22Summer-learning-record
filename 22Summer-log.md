@@ -268,3 +268,99 @@ The Second-Pass：Generating the machine language program.
 现在开始看一点CS61A的内容，感觉还是不错的（因为单学ICS其实有点小浪费时间，而且无聊）。不过CS61A的Lab之类的东西确实还是要找时间做的，早上的时间就不要这么浪费了吧。  
 请不要焦虑。  
 ***
+# 2022/7/7  
+今天除了看完计概的内容以外，还开始上CS61A的课程了。  
+***  
+## **计算机系统概论**  
+***Chapter8***  
+学完了剩下的数据结构。
+* **Recursion**：主要从求阶乘和求斐波那契数列的第N项两个例子讲述了如何递归的概念，在用LC-3汇编语言实现递归的过程中要注意Stack的应用，不然就会丢失已有的数据和返回的位置。  
+最主要的例子还是Maze，在Maze的code中，了解到了掩码的应用和对最高位的操作以实现一个比较的功能。  
+* **Queue**：和Stack有类似之处，但是区别在于有FRONT和REAR两个指针来确定队尾和队首，值得注意的是：FRONT指向第一个数据前一个地址，REAR指向最后一个数据的地址；Queue有着环形的结构，一个queue最多可以储存n-1个数据，当FRONT和REAR相同时，这个queue is empty；Queue同样也存在Underflow和Overflow，分别在queue empty和full的情况下出现；对queue的操作被称为*remove*和*insert*。  
+* **Character Strings**：就是字符串，看了两个例子：字符串储存员工信息；字符串表示整数。 
+
+***Chapter16***  
+这章是根据上课的大纲，被我提前拿来预习的。主要就是讲Pointer & Array。  
+* Pointers:讲了指针的概念；两个运算符&和*；空指针;最后通过一个例子（Language C）表明指针的运用。  
+* Array：数组的概念；数组用汇编语言的操作；数组作为函数传递的值；字符串数组；数组与指针的关系；数组的应用，主要是学了一个Insertion Sort的算法；Array in Language C的越界会导致的BUG；变长度数组；多维数组。  
+***   
+## **CS61A**  
+听完了Lecture1的内容，就是介绍一下课程，稍微展示了一下Python的应用，一些关于Expression的内容。  
+***  
+从总结来看，今天学的内容不是很多，主要大多是一些已经学过的内容，所以看起来比较轻松。  
+现在开始看一点CS61A的内容，感觉还是不错的（因为单学ICS其实有点小浪费时间，而且无聊）。不过CS61A的Lab之类的东西确实还是要找时间做的，早上的时间就不要这么浪费了吧。  
+请不要焦虑。  
+***
+# 2022/7/7  
+今天早上终于花时间配置完了Vscode中的C/C++和Python编程环境，总算是完成一件拖拖拉拉的事情。学了计概，但是没有时间做CS61A的Lab0了。  
+## **计算机系统概论**  
+***Chapter19***  
+也是数据结构的内容，不过是Dynamic Data Structure。  
+* Structure：结构体，讲的就是一些已经学过的东西；typedef，可用于定义一个新的数据类型名称，方便程序的编写和指针的定义；结构体数组；结构体数组和指针的关系。  
+* Dynamic Memory Allocation：讲的是如何用malloc和free函数在Heap中开辟出一块动态存储空间，具体的应用后续可以展现；值得注意的是，malloc返回的是一个 generic pointer (void *)指向被分配的空间，所以要利用type cast来实现对指针的赋值；还有remalloc函数可用于grow/shrink已经分配的空间；这些函数都在stlib.h头文件中；都可应用于dynamic array。  
+* Linked Lists：链表的概念；Add/Delete a Node,分为五种情况，Middle/Empty List/at Tail/at Head/(Not)Exits;链表操作的Language C实现；数组与链表的异同。  
+
+***Chapter9***  
+讲的是在LC-3中实现I/O，算是从数据结构的部分回归主线，内容有点多，而且学的不是很明白。  
+
+首先是几个小概念：  
+* Privilege：权限，一般的计算机使用过程中会分为Supervisor Mode和User Mode，分别对应有无权限。  
+* Priority：优先级。  
+值得注意的是，这两个概念可以说是坐标轴的横轴和纵轴，以此来理解一个program在执行中的位置。  
+* Processor Statu Register(PSR)：状态寄存器，bit[15]-Priv,bit[10:8]-Priority,bit[2:0]-cond code。  
+
+然后讲述Organization of Memory in LC-3：  
+* 自上而下system space|SSP|supervisor stack(x0000-x2FFF),user space|USP|user stack(x3000-xFDFF),I/O page(xFE00-xFFFF)。  
+* 一个program只能在两种Mode中的一种执行，两种模式切换时SP会分别进行Save&Load。  
+
+重头戏，关于Input/Output。首先是关于I/O的基本特点：
+* Memory-Mapped I/O & Special I/O instruction：分别是在Memory中映射出一块内容负责处理I/O的相关内容；一套独立的 I/O Instruction。  
+* Asynchronous & Synchronous：I/O device和processor之间的信号交换存在一个同步的问题，因为processor的处理是由Clock决定的存在周期，为了解决这一问题，我们通过设置一个flag called *ready bit*。  
+* Interrupt-Driven & Polling：由上一个问题引发的问题，分别对应，由I/O device来打断processor，还是由Processor来时刻查询ready bit的状态来决定是否执行指令。  
+
+Input from Keyboard：有两个基本的Register，**KBDR** & **KBSR**：
+* keyboard data register:bit[15:8]=0,bit[7:0]用于存放Data。  
+* keyboard statu register：bit[15]存放ready bit，bit[14]存放Privilege。  
+然后就是如何利用这两个Register来完成从keybroad输入。  
+
+Output to the Monitor：一样有两个Register，**DDR** & **DSR**：
+* display data register:bit[15:8]=0,bit[7:0]用于存放Data。  
+* display statu register：bit[15]存放ready bit，bit[14]存放Privilege。  
+然后就是如何利用这两个Register完成输出到monitor。  
+
+Example：keybroad echo  
+一个更加复杂的样例，当可以input时，在monitor上输出prompt。  
+最后就是Data path implementation of memory-mapped I/O（依旧是有点看不懂，又有点懂）。  
+
+LC-3's TRAP Routine：
+* TRAP Mechanism：involve several element：A set of service routines；A table of starting addresses；the TRAP instruction;A linkage.
+* TRAP instruction :bit[15:12]-opcode,bit[11:8]=0,bit[7:0]-trap vector。In Execute phase，TRAP 做三件事情：1、将PSR&PC push into system stack，按照需求转换SP。2、set bit[15] in PSR to 0.3、将trap vector转换到16 bits以指向Address。  
+* RTI instruction：1000000000000000；将之前的PSR和PC pop，回到接下来的address，根据权限切换SP。  
+一个切换大小写的样例。  
+在后面还会看到完整的储存在LC-3中的用于输出输出的code，还用到了JMP/RET机制。  
+Halt：利用一个x7FFF的MASK以完成对Run latch(the bit[15] of MCR(master control register))的清零，从而停止clock。  
+
+中间讲了一块内容，就是如何使用LC-3汇编语言实现puts(),这部分的code也是前面提到的完整keybroad echo代码的一部分（用于输出prompt）。  
+
+最后一块内容就是提到的Interrupt & Interrupt-Driven I/O：
+* 展示了一个Interrupt 的流程图，讲述了以下两种机制的差异，主要体现在节省processor的时间上(?)。
+
+*Two Parts of the Processor*:  
+1、Causing the interrupt to occur :  
+* the device want the service.  
+* the device has the privilege.
+* the urgency.  
+以上的这些必要性都是通过INT signal 来判断的。注意的是，如果确定interrupt，将在current instruction 结束后开始；会出现一个INT vector。  
+
+2、Handling the interrupt request :
+* Initiate the interrupt:save the state of the interrupted program(一般只save PSR PC，LC-3默认register's content 已经save);load the state of the interrupt service routine.
+* Service the interrupt.
+* Return from the interrupt(使用RTI指令，将PC和PSR从supervisor stack中弹出).  
+
+值得注意的是，不是只有I/O可以造成一个Interrupt。  
+
+最后展示了Polling被interrupt导致的问题，并给出一个solution（没怎么看懂）。  
+***  
+内容还是很多的，幸亏预习了一遍，看看明天早上有没有时间去完成Lab0，主要还是要注重休息。  
+也不知道C加强又会有什么乱七八糟的作业，总之加油！  
+***  
