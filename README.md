@@ -5,7 +5,7 @@
 **悔恨的话不必多说，只有努力才能有所创造。**
 
 所以我初步列出一下**目标**清单：  
-1.the preview of The Instruction of Computer System    (4/20)  
+1.the preview of The Instruction of Computer System   
 2.the preview of University Physics (A) Ⅱ  
 3.the preview of Complex Variable Functions & Integral Transformation  
 4.the preview of Probability and Mathematical Statistics  
@@ -13,3 +13,5 @@
 The Instruction of Computer System 的教材是 The Instruction of Computer System (Yale Patt)
   
 开始学习CS61A on 2022/7/7 选择的是20Spring的课程，感觉具体的差距不是很大，总之先学着，毕竟我的基础比较好。
+  
+预习完了ICS on 2022/7/8 学的很快，很不错。
