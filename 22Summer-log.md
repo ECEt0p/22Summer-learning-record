@@ -352,3 +352,75 @@ Halt：利用一个x7FFF的MASK以完成对Run latch(the bit[15] of MCR(master c
 接下来可以将重点放在学习CS61A上了，明天开始吧。  
 安倍晋三遇刺。  
 ***  
+# 2022/7/9  
+学了CS61A。  
+## **CS61A**  
+以后这里就贴一下上课的Note。  
+***Lecture2***   
+* 有一个工具：Online Python Tutor(?) 
+* python的语句计算：  
+先计算等号右边的值，再将值赋给左边对应的name。  
+```
+a = 1
+b = 2
+b , a = a+b , b
+```  
+结果是 
+``` 
+a = 2  
+b = 3
+```  
+* assignment : bind names to value  
+  function : bind names to expression  
+* **execution procrdure for def statement**:  
+  1.create a function with signature  
+  2.set the body of the function to be everything indented after the first line  
+  3.bind name to that function in the current frame  
+* **execution procrdure for calling user-define functions**:  
+  1.add a local frame,forming a *new* environment  
+  2.bind the function's formal parameters to its arguments in that frame  
+  3.execute the body of the function in that new environment  
+* every expression is evaluated in the context of an environment. 
+* current environment : the global frame alone of a local frame,followed by the global frames.   
+* An environment is a sequence of frames ; A name evaluates to the value bound to thai name in the earliest frame of the current environment in which that name is found.  
+* example:  
+  ```
+  def a(a):   
+    return a*a  
+  a(2)  
+  ```
+  the result is 4.  
+***  
+hw感想：  
+* Q5涉及函数的执行和返回值的各种关系，思路应当清晰。  
+* 语法应该还是要靠自己学。  
+***  
+***Lecture3*** 
+* **None** represents nothing in Python  
+* A function that does not explicity return a value will return **None**  
+* **None** is not displayed by the interpreter as the value of an expression  
+* None is **NoneType**  
+* Pure function : just return values
+* Non-Pure function : have side effects
+* 这个例子能够展现print和None的机制
+  ```
+  >>> print(print(1),print(2))
+  1
+  2
+  None None
+  ```
+* Life cycle of the user-defined function
+* Multiple environment
+* an environment is a sequence of frames
+* environment 好像是一个随着程序变化会变化的状态(?)
+* An environment is a sequence of frames 
+*  A name evaluates to the value bound to thai name in the earliest frame of the current environment in which that name is found.  
+* Names have no meaning without environment
+* Python语句（函数，条件，循环）
+* False values in python : False,0,'',None (More to come)  
+* True values in python : Anything else the False value
+***  
+现在的内容还算是简单，所以游刃有余。  
+今天知道了如何再Markdown中插入代码。  
+以后就是一天上三个Lecture，感觉很快就能学完了，作业什么的单独做。  
+***
