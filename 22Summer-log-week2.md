@@ -21,3 +21,65 @@ Hog感想：
 ICS的课程质量堪忧，有点不想上，以后就是，早上ICS，中午CS61A，ICS实验课，ICS homework,晚上CS61A的学习模式。  
 加油！  
 ***
+# **2022/7/12**  
+稍微上了一点CS61A的课。  
+## CS61A  
+# Lecture4  
+* Fibonacci Sequence starts at 0  
+* A function's domain is the set of all inputs it might possibly take as arguments.  
+* A function's range is the set of output values it might possibly return.  
+* A pure function's behavior is the relationship it creates between input and output.
+* **high-order function**: a function that takes a function as an argument value or returns a function as a return value.
+* ```
+  assert expression , 'string'
+  ```
+  when expression is True, nothing happens; when expression if False, print the string.
+* Functions defined within other functions bodies are bound to names in a *local* frame
+* functions can be manipulated as values in our programming language.
+* express general methods of computation; remove repetition from programs; separate concers among functions.  
+***  
+昨天没写，这份是13号，写的，忘记了。  
+***  
+# **2022/7/13**  
+早起，不错。  
+## CS61A  
+看完了相关的reading，还把discuss做完了。  
+***  
+## ICS  
+今天用机器语言写出了这个程序，很麻烦，要是用汇编语言都能快很多，究极折磨，贴一下代码吧。  
+```
+0011 0000 0000 0000         ;.ORIG X3000
+0010 000 01111 1111         ;LD R0,#255      ;将数据加载到R0
+0101 001 001 1 00000        ;AND R1,R1,#0    ;初始化R1，用于存放掩码
+0101 010 010 1 00000        ;AND R2,R2,#0    ;初始化R2，用于存放结果
+0101 011 011 1 00000        ;AND R3,R3,#0    ;初始化R3，用于存放掩码与数据的与运算结果
+0101 100 100 1 00000        ;AND R4,R4,#0    ;初始化R4，用于存放掩码的相反数的补码
+0101 101 101 1 00000        ;AND R5,R5,#0    ;初始化R5，用于计数器
+
+0001 001 001 1 01111        ;ADD R1,R1,#15
+0001 101 101 1 10011        ;ADD R5,R5,#-13  ;计数器初始值
+
+0101 011 000 0 00 001       ;AND R3,R0,R1    ;获得掩码与数据的与运算结果
+1001 100 001 1 11111        ;NOT R4,R1       
+0001 100 100 1 00001        ;ADD R4,R4,#1    ;获得掩码的反码的补码
+0001 011 011 0 00 100       ;ADD R3,R3,R4    ;计算结果
+
+0000 010 000001000          ;JUDGE   BRZ RESULT;判断结果是否为0
+0001 101 101 1 00001        ;ADD R5,R5,#1    ;R5自增
+0000 010 000000111          ;BRZ FINAL;判断R5是否为0
+0001 001 001 0 00 001       ;ADD R1,R1,R1    ;掩码前移
+
+0101 011 000 0 00 001       ;AND R3,R0,R1    ;获得掩码与数据的与运算结果
+1001 100 001 1 11111        ;NOT R4,R1       
+0001 100 100 1 00001        ;ADD R4,R4,#1    ;获得掩码的反码的补码
+0001 011 011 0 00 100       ;ADD R3,R3,R4    ;计算结果
+0000 111 111110111          ;BRNZP JUDGE     ;返回判断语句
+
+0001 010 010 1 00001        ;RESULT  ADD R2,R2,#1
+1111 0000 00100101          ;FINAL   HALT
+                            ;.END
+```  
+只能说是看着容易写着难。  
+***
+听课方面，还是得听，但是看别的网课感觉更有效率，纠结，好好上课吧，真的努力不差这几天的。
+***
