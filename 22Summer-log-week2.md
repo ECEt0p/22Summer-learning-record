@@ -83,3 +83,25 @@ ICS的课程质量堪忧，有点不想上，以后就是，早上ICS，中午CS
 ***
 听课方面，还是得听，但是看别的网课感觉更有效率，纠结，好好上课吧，真的努力不差这几天的。
 ***
+# **2022/7/12** 
+*** 
+## CS61A
+完成了Lecture5的内容，完成了hw02.
+## Lecture5  
+* 关于嵌套定义函数和environment diagram的知识
+* local name
+* **lambda expression**的用法
+* lambda's return must be a single expression.
+* lambda expression versus def statements:
+  * both create a function with the same domain, range, and behavior.
+  * both functions have as their parent the frame in which they were defined.
+  * both bind that function to the name square.
+  * only the def statement gives the function an **intrinsic name**.
+
+Homework感想：  
+基础题目都会做了，但是关于丘奇数的拓展题很难，对函数的理解非常不透彻，以后找机会补一下。
+***
+# ICS  
+首次Lab验收通过了，上课内容开始听了。  
+***
+现在的学习很规律。
