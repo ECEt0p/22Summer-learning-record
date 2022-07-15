@@ -83,8 +83,7 @@ ICS的课程质量堪忧，有点不想上，以后就是，早上ICS，中午CS
 ***
 听课方面，还是得听，但是看别的网课感觉更有效率，纠结，好好上课吧，真的努力不差这几天的。
 ***
-# **2022/7/12** 
-*** 
+# **2022/7/14** 
 ## CS61A
 完成了Lecture5的内容，完成了hw02.
 ## Lecture5  
@@ -104,4 +103,22 @@ Homework感想：
 # ICS  
 首次Lab验收通过了，上课内容开始听了。  
 ***
-现在的学习很规律。
+现在的学习很规律。  
+***
+# 2022/7/15
+## CS61A
+完成了Lecture6的学习，完成了Lab02.  
+## Lecture6  
+* return statement completes the evaluation of a call and provide its value.  
+* only one return statement is ever executed while executing the body of a function.
+* 不能用call expression来代替if statement
+* control expression:
+  * `<left> and <right>`
+  * `<left> or <right>`
+* conditional expression
+  * `<consequence> if <predicate> else <alternative>`
+  * if the predicate true, value equals the value of consequence,else the alternative.
+
+Lab感想：对函数的嵌套等定义还是很模糊，做起题目来并非得心应手。
+***  
+明天继续加油。
