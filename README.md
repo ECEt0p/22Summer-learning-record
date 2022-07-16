@@ -16,5 +16,5 @@ The Instruction of Computer System 的教材是 The Instruction of Computer Syst
   
 预习完了ICS on 2022/7/8 学的很快，很不错。
   
-第一周正式结束，开心。
-第二周也结束了，感觉很混，之后还是要多多学习。
+第一周正式结束，开心。  
+第二周也结束了，感觉很混，之后还是要多多学习。CS61A的学习难度还是有一点的，感觉双开ICS不是个很好的选择。
