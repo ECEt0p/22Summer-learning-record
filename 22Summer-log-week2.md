@@ -122,3 +122,28 @@ Homework感想：
 Lab感想：对函数的嵌套等定义还是很模糊，做起题目来并非得心应手。
 ***  
 明天继续加油。
+***
+# 2022/7/16  
+第二周结束，有点小偷懒，但还是学的不错的。  
+## CS61A  
+## Lecture6  
+* return statement completes the evaluation of a call and provide its value.  
+* only one return statement is ever executed while executing the body of a function.
+* 不能用call expression来代替if statement
+* control expression:
+  * `<left> and <right>`
+  * `<left> or <right>`
+* conditional expression
+  * `<consequence> if <predicate> else <alternative>`
+  * if the predicate true, value equals the value of consequence,else the alternative.  
+
+Lab感想：对函数的嵌套等定义还是很模糊，做起题目来并非得心应手。
+***
+# Lecture7
+* an example to introduce why we need high-order function
+# Lecture8
+* Function Curring
+* Decorater
+* Mid review、
+***  
+做完了ics的作业，明天写Lab02，顺便和他们一起玩会PUBG，加油！
