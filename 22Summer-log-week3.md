@@ -1,5 +1,5 @@
 # 2022/7/17  
-今天做完了Lab02，无他。
+今天做完了Lab02，无他。 
 ```
         .ORIG x3000
         AND R1,R1,#0    ;STORE THE VALUE IN DEC
